@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Arria Coburn — Student Success Coaching</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --maroon:       #6B1E2E;
+    --maroon-light: #8B2A3F;
+    --maroon-dark:  #4A1220;
+    --maroon-pale:  #F9F0F2;
+    --maroon-muted: #D4A0AA;
+    --gold:         #C9922A;
+    --gold-light:   #F5E6C8;
+    --gold-dark:    #7A5515;
+    --white:        #FFFFFF;
+    --off-white:    #FAF8F6;
+    --gray-100:     #F3F0ED;
+    --gray-200:     #E5E0DB;
+    --gray-400:     #9C958E;
+    --gray-700:     #3D3830;
+    --gray-900:     #1A1612;
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    16px;
+    --shadow-sm:    0 1px 4px rgba(74,18,32,0.08);
+    --shadow-md:    0 4px 16px rgba(74,18,32,0.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--gray-900);
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: var(--maroon-dark);
+    padding: 0 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 64px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+  }
+  .nav-brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+  .nav-brand-text { color: #fff; font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 500; letter-spacing: 0.01em; }
+  .nav-brand-sub { color: var(--maroon-muted); font-size: 11px; font-weight: 400; display: block; margin-top: -2px; letter-spacing: 0.05em; }
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a { color: rgba(255,255,255,0.75); font-size: 13px; text-decoration: none; letter-spacing: 0.02em; transition: color 0.2s; }
+  .nav-links a:hover { color: #fff; }
+  .nav-cta {
+    background: var(--gold) !important;
+    color: #fff !important;
+    padding: 9px 18px;
+    border-radius: var(--radius-md);
+    font-size: 13px !important;
+    font-weight: 500;
+  }
+  .nav-cta:hover { background: #b07e22 !important; }
+
+  /* ── HERO ── */
+  .hero {
+    background: var(--maroon);
+    background-image:
+      radial-gradient(ellipse at 80% 0%, rgba(201,146,42,0.15) 0%, transparent 60%),
+      radial-gradient(ellipse at 0% 100%, rgba(74,18,32,0.6) 0%, transparent 50%);
+    padding: 72px 40px 64px;
+    display: flex; align-items: center; gap: 48px;
+    position: relative; overflow: hidden;
+  }
+  .hero::after {
+    content: '';
+    position: absolute; top: -40px; right: -40px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background: rgba(201,146,42,0.06);
+    pointer-events: none;
+  }
+  .hero-owl { flex-shrink: 0; }
+  .hero-copy { flex: 1; max-width: 500px; }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(201,146,42,0.2);
+    border: 1px solid rgba(201,146,42,0.35);
+    color: #F5D99A;
+    font-size: 11px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 18px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    color: #fff;
+    font-size: 38px;
+    font-weight: 600;
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+  .hero h1 em { color: var(--gold); font-style: normal; }
+  .hero p { color: rgba(255,255,255,0.72); font-size: 15px; line-height: 1.7; margin-bottom: 28px; max-width: 420px; }
+  .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: #fff;
+    border: none;
+    padding: 13px 24px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-primary:hover { background: #b07e22; transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    color: rgba(255,255,255,0.85);
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 13px 24px;
+    border-radius: var(--radius-md);
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: border-color 0.2s, color 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-outline:hover { border-color: rgba(255,255,255,0.6); color: #fff; }
+
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: var(--maroon-dark);
+    display: flex;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .stat {
+    flex: 1; text-align: center; padding: 20px 16px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .stat:last-child { border-right: none; }
+  .stat-num { color: var(--gold); font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; }
+  .stat-lbl { color: rgba(255,255,255,0.5); font-size: 11px; margin-top: 3px; letter-spacing: 0.04em; text-transform: uppercase; }
+
+  /* ── MAIN LAYOUT ── */
+  main { max-width: 860px; margin: 0 auto; padding: 0 24px; }
+
+  .section {
+    padding: 56px 0 48px;
+    border-bottom: 1px solid var(--gray-200);
+  }
+  .section:last-child { border-bottom: none; }
+  .section-eyebrow {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px;
+  }
+  .eyebrow-line { width: 28px; height: 2px; background: var(--maroon); border-radius: 2px; }
+  .eyebrow-text { font-size: 11px; font-weight: 500; color: var(--maroon); text-transform: uppercase; letter-spacing: 0.1em; }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 500;
+    color: var(--gray-900);
+    margin-bottom: 6px;
+    line-height: 1.25;
+  }
+  .section-sub { font-size: 14px; color: var(--gray-400); margin-bottom: 32px; }
+
+  /* ── SERVICES ── */
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; }
+  .service-card {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 24px 20px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .service-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+  .service-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--maroon);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  }
+  .service-icon {
+    width: 44px; height: 44px;
+    background: var(--maroon-pale);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .service-icon svg { width: 22px; height: 22px; stroke: var(--maroon); }
+  .service-name { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 6px; }
+  .service-desc { font-size: 13px; color: var(--gray-400); line-height: 1.55; }
+
+  /* ── RESUME STEPS ── */
+  .resume-steps { display: flex; flex-direction: column; gap: 14px; }
+  .resume-step {
+    display: flex; align-items: flex-start; gap: 16px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .step-num {
+    width: 36px; height: 36px; flex-shrink: 0;
+    background: var(--maroon);
+    color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 500;
+    font-family: 'Playfair Display', serif;
+  }
+  .step-title { font-size: 14px; font-weight: 500; color: var(--gray-900); margin-bottom: 4px; }
+  .step-desc { font-size: 13px; color: var(--gray-400); line-height: 1.55; margin-bottom: 8px; }
+  .step-badge {
+    display: inline-block;
+    background: var(--gold-light);
+    color: var(--gold-dark);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-weight: 500;
+  }
+
+  /* ── OPPORTUNITIES ── */
+  .opps-list { display: flex; flex-direction: column; gap: 10px; }
+  .opp-card {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    padding: 16px 20px;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow 0.2s;
+  }
+  .opp-card:hover { box-shadow: var(--shadow-md); }
+  .opp-icon {
+    width: 42px; height: 42px;
+    background: var(--maroon-pale);
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .opp-icon svg { width: 20px; height: 20px; stroke: var(--maroon); }
+  .opp-info { flex: 1; }
+  .opp-title { font-size: 14px; font-weight: 500; color: var(--gray-900); }
+  .opp-meta { font-size: 12px; color: var(--gray-400); margin-top: 2px; }
+  .opp-tag {
+    font-size: 11px; font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .tag-intern  { background: #E1F5EE; color: #085041; }
+  .tag-scholar { background: #EEEDFE; color: #3C3489; }
+  .tag-job     { background: #FAEEDA; color: #633806; }
+  .tag-vol     { background: #E6F1FB; color: #0C447C; }
+
+  /* ── CALENDAR ── */
+  #booking { scroll-margin-top: 80px; }
+  .calendar-wrap {
+    background: var(--white);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+  .cal-header {
+    background: var(--maroon);
+    padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cal-month {
+    font-family: 'Playfair Display', serif;
+    font-size: 17px; color: #fff; font-weight: 500;
+  }
+  .cal-nav { display: flex; gap: 8px; }
+  .cal-btn {
+    background: rgba(255,255,255,0.15);
+    border: none; color: #fff;
+    width: 32px; height: 32px;
+    border-radius: var(--radius-sm);
+    cursor: pointer; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .cal-btn:hover { background: rgba(255,255,255,0.25); }
+  .cal-grid { padding: 20px 24px; }
+  .cal-days-header { display: grid; grid-template-columns: repeat(7, 1fr); margin-bottom: 10px; }
+  .cal-day-label { text-align: center; font-size: 11px; color: var(--gray-400); font-weight: 500; padding: 4px 0; text-transform: uppercase; letter-spacing: 0.05em; }
+  .cal-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 4px; }
+  .cal-day {
+    aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
+    font-size: 13px; border-radius: var(--radius-sm);
+    cursor: default; color: var(--gray-700);
+    position: relative; transition: background 0.15s;
+  }
+  .cal-day.available { cursor: pointer; font-weight: 500; color: var(--maroon); }
+  .cal-day.available:hover { background: var(--maroon-pale); }
+  .cal-day.today { background: var(--maroon-pale); color: var(--maroon); font-weight: 500; }
+  .cal-day.selected { background: var(--maroon) !important; color: #fff !important; }
+  .cal-day.has-dot::after {
+    content: ''; position: absolute; bottom: 4px;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--gold);
+  }
+  .cal-day.disabled { color: var(--gray-200); }
+
+  .slots-section { padding: 0 24px 20px; display: none; }
+  .slots-title { font-size: 13px; font-weight: 500; color: var(--gray-700); margin-bottom: 12px; }
+  .slots-grid { display: flex; flex-wrap: wrap; gap: 8px; }
+  .slot {
+    background: var(--gray-100);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-sm);
+    padding: 7px 14px;
+    font-size: 13px; color: var(--gray-700);
+    cursor: pointer; font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .slot:hover { border-color: var(--maroon); color: var(--maroon); background: var(--maroon-pale); }
+  .slot.active { background: var(--maroon); color: #fff; border-color: var(--maroon); }
+
+  .booking-form { padding: 0 24px 24px; display: none; }
+  .zoom-notice {
+    display: flex; align-items: center; gap: 10px;
+    background: #EBF3FF; border: 1px solid #B8D4F5;
+    border-radius: var(--radius-md);
+    padding: 10px 14px; margin-bottom: 16px;
+    font-size: 13px; color: #1A56AA;
+  }
+  .zoom-svg { width: 22px; height: 22px; flex-shrink: 0; }
+  .form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+  .form-field { flex: 1; display: flex; flex-direction: column; gap: 5px; }
+  .form-field label { font-size: 12px; font-weight: 500; color: var(--gray-700); letter-spacing: 0.02em; }
+  .form-field input, .form-field select, .form-field textarea {
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    font-size: 13px;
+    background: var(--white);
+    color: var(--gray-900);
+    outline: none;
+    font-family: 'Inter', sans-serif;
+    transition: border-color 0.15s;
+  }
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--maroon); }
+  .form-field textarea { min-height: 72px; resize: vertical; }
+  .confirm-btn {
+    width: 100%; background: var(--maroon); color: #fff;
+    border: none; padding: 13px;
+    border-radius: var(--radius-md);
+    font-size: 14px; font-weight: 500; cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.2s;
+    margin-top: 4px;
+  }
+  .confirm-btn:hover { background: var(--maroon-light); }
+  .confirm-msg {
+    margin: 0 24px 24px;
+    background: #E1F5EE; border: 1px solid #5DCAA5;
+    border-radius: var(--radius-md);
+    padding: 14px 18px;
+    font-size: 14px; color: #085041;
+    display: none; text-align: center;
+  }
+  .confirm-msg.show { display: block; }
+  .divider { height: 1px; background: var(--gray-200); margin: 0 24px; }
+
+  /* ── TESTIMONIALS ── */
+  .testimonials { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+  .testimonial {
+    background: var(--white); border: 1px solid var(--gray-200);
+    border-radius: var(--radius-lg); padding: 20px;
+    box-shadow: var(--shadow-sm);
+  }
+  .stars { color: var(--gold); font-size: 13px; margin-bottom: 10px; letter-spacing: 2px; }
+  .testimonial-text { font-size: 13px; color: var(--gray-700); line-height: 1.6; margin-bottom: 14px; font-style: italic; }
+  .testimonial-author { display: flex; align-items: center; gap: 10px; }
+  .avatar { width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 500; }
+  .av-m { background: #EEEDFE; color: #3C3489; }
+  .av-j { background: #E1F5EE; color: #085041; }
+  .av-s { background: #FAEEDA; color: #633806; }
+  .author-name { font-size: 13px; font-weight: 500; color: var(--gray-900); }
+  .author-role { font-size: 11px; color: var(--gray-400); }
+
+  /* ── CONTACT CTA ── */
+  .cta-section {
+    background: var(--maroon);
+    background-image: radial-gradient(ellipse at 100% 0%, rgba(201,146,42,0.2) 0%, transparent 60%);
+    padding: 56px 40px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-family: 'Playfair Display', serif;
+    color: #fff; font-size: 30px; font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .cta-section p { color: rgba(255,255,255,0.7); font-size: 15px; margin-bottom: 28px; }
+  .cta-contact { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; margin-bottom: 28px; }
+  .contact-item { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.8); font-size: 14px; }
+  .contact-item a { color: rgba(255,255,255,0.8); text-decoration: none; }
+  .contact-item a:hover { color: #fff; text-decoration: underline; }
+  /* ── To edit your contact info, change the email/phone below ── */
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--maroon-dark);
+    padding: 24px 40px;
+    display: flex; align-items: center; justify-content: space-between;
+    flex-wrap: wrap; gap: 16px;
+  }
+  .footer-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .footer-name { color: rgba(255,255,255,0.7); font-family: 'Playfair Display', serif; font-size: 15px; }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { color: rgba(255,255,255,0.45); font-size: 12px; text-decoration: none; }
+  .footer-links a:hover { color: rgba(255,255,255,0.75); }
+  .footer-copy { color: rgba(255,255,255,0.3); font-size: 11px; width: 100%; padding-top: 4px; border-top: 1px solid rgba(255,255,255,0.07); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    nav { padding: 0 20px; }
+    .nav-links a:not(.nav-cta) { display: none; }
+    .hero { flex-direction: column; padding: 48px 24px 40px; text-align: center; }
+    .hero h1 { font-size: 28px; }
+    .hero-btns { justify-content: center; }
+    main { padding: 0 16px; }
+    .form-row { flex-direction: column; }
+    footer { padding: 20px 24px; }
+    .cta-section { padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════
+     NAVIGATION
+     To edit: change "Wise Owl Coaching" to your name/brand
+     ════════════════════════════ -->
+<nav>
+  <a class="nav-brand" href="#">
+    <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="18" cy="18" r="17" fill="#4A1220"/>
+      <circle cx="12" cy="16" r="4" fill="#fff"/>
+      <circle cx="24" cy="16" r="4" fill="#fff"/>
+      <circle cx="12" cy="16" r="2.5" fill="#1a0510"/>
+      <circle cx="24" cy="16" r="2.5" fill="#1a0510"/>
+      <circle cx="12.8" cy="15.2" r="0.8" fill="#fff"/>
+      <circle cx="24.8" cy="15.2" r="0.8" fill="#fff"/>
+      <path d="M16 21 Q18 23.5 20 21" stroke="#C9922A" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+      <path d="M17 22.5 L18 25 L19 22.5" fill="#C9922A"/>
+      <path d="M10 9 Q12 6 14 9" stroke="#C9922A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <path d="M22 9 Q24 6 26 9" stroke="#C9922A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+    </svg>
+    <div>
+      <span class="nav-brand-text">Arria Coburn</span>
+      <span class="nav-brand-sub">Student Success Coaching · Massachusetts</span>
+    </div>
+  </a>
+  <div class="nav-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#resume">Resume</a>
+    <a href="#opportunities">Opportunities</a>
+    <a href="#booking" class="nav-cta">Book a Session</a>
+  </div>
+</nav>
+
+<!-- ════════════════════════════
+     HERO
+     Edit your headline and description below
+     ════════════════════════════ -->
+<section class="hero">
+  <div class="hero-owl">
+    <svg width="130" height="148" viewBox="0 0 130 148" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="65" cy="84" rx="46" ry="54" fill="#6B1E2E" opacity="0.6"/>
+      <ellipse cx="65" cy="70" rx="42" ry="48" fill="#8B2A3F"/>
+      <ellipse cx="65" cy="60" rx="33" ry="37" fill="#6B1E2E"/>
+      <circle cx="46" cy="54" r="14" fill="#fff"/>
+      <circle cx="84" cy="54" r="14" fill="#fff"/>
+      <circle cx="46" cy="54" r="9" fill="#1a0510"/>
+      <circle cx="84" cy="54" r="9" fill="#1a0510"/>
+      <circle cx="48.5" cy="51.5" r="3" fill="#fff"/>
+      <circle cx="86.5" cy="51.5" r="3" fill="#fff"/>
+      <path d="M57 68 Q65 75 73 68" stroke="#C9922A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <path d="M61 72 L65 79 L69 72" fill="#C9922A"/>
+      <path d="M36 32 Q41 22 50 32" stroke="#C9922A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M80 32 Q87 22 96 32" stroke="#C9922A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <path d="M22 90 Q16 102 22 114 Q34 106 30 90" fill="#8B2A3F"/>
+      <path d="M108 90 Q114 102 108 114 Q96 106 100 90" fill="#8B2A3F"/>
+      <ellipse cx="51" cy="110" rx="9" ry="6" fill="#C9922A" opacity="0.9"/>
+      <ellipse cx="79" cy="110" rx="9" ry="6" fill="#C9922A" opacity="0.9"/>
+      <path d="M43 105 L51 116 L59 105" fill="#C9922A"/>
+      <path d="M71 105 L79 116 L87 105" fill="#C9922A"/>
+    </svg>
+  </div>
+  <div class="hero-copy">
+    <div class="hero-badge">✦ One-on-one student coaching</div>
+    <!-- ↓ Edit your main headline here -->
+    <h1>Your career starts here — with <em>expert guidance</em></h1>
+    <!-- ↓ Edit your description here -->
+    <p>I'm Arria Coburn, a Massachusetts-based educator with nearly two decades in education. I work one-on-one with students to build standout resumes, discover real opportunities, and take confident next steps.</p>
+    <div class="hero-btns">
+      <a href="#booking" class="btn-primary">Book a Zoom Session</a>
+      <a href="#services" class="btn-outline">See all services</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATS BAR — edit numbers and labels here -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">200+</div><div class="stat-lbl">Students helped</div></div>
+  <div class="stat"><div class="stat-num">94%</div><div class="stat-lbl">Interview success</div></div>
+  <div class="stat"><div class="stat-num">1-on-1</div><div class="stat-lbl">Personalized sessions</div></div>
+  <div class="stat"><div class="stat-num">Zoom</div><div class="stat-lbl">Meet anywhere</div></div>
+</div>
+
+<main>
+
+  <!-- ════════════════════════════
+       ABOUT ARRIA
+       ════════════════════════════ -->
+  <section class="section" id="about">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">About</span></div>
+    <h2 class="section-title">Meet Arria Coburn</h2>
+    <p class="section-sub">Nearly two decades of educational leadership rooted in student voice and equity</p>
+    <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+      <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-sm); border-top: 3px solid var(--maroon);">
+        <div style="font-size:11px; font-weight:500; color:var(--maroon); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Education</div>
+        <div style="font-size:14px; font-weight:500; color:var(--gray-900); margin-bottom:4px;">Doctorate — Northeastern University</div>
+        <div style="font-size:13px; color:var(--gray-400);">Earned 2021 · Springfield, MA</div>
+      </div>
+      <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:20px; box-shadow:var(--shadow-sm); border-top: 3px solid var(--gold);">
+        <div style="font-size:11px; font-weight:500; color:var(--maroon); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:8px;">Recognition</div>
+        <div style="font-size:14px; font-weight:500; color:var(--gray-900); margin-bottom:4px;">Regional Principal of the Year</div>
+        <div style="font-size:13px; color:var(--gray-400);">Magnet Schools of America, 2018</div>
+      </div>
+    </div>
+    <div style="background:var(--white); border:1px solid var(--gray-200); border-radius:var(--radius-lg); padding:24px 28px; box-shadow:var(--shadow-sm); margin-bottom:16px;">
+      <p style="font-size:14px; color:var(--gray-700); line-height:1.75; margin-bottom:14px;">
+        Dr. Arria Coburn is a Western Massachusetts educator with nearly 20 years of experience in schools. She began her career as a special education teacher before rising to assistant principal and then principal of the Springfield Renaissance School in Springfield, MA — a grade 6–12 magnet school where she led for over five years.
+      </p>
+      <p style="font-size:14px; color:var(--gray-700); line-height:1.75; margin-bottom:14px;">
+        Under her leadership, Springfield Renaissance achieved a 100% college acceptance rate for ten consecutive years and outperformed the state on Massachusetts standardized assessments. The school was honored with the Magnet School of the Year award and received special recognition from the Massachusetts Department of Education for raising proficiency in both math and English.
+      </p>
+      <p style="font-size:14px; color:var(--gray-700); line-height:1.75;">
+        Arria completed two fellowships in 2020–2021 — one with the Massachusetts Department of Education and another with Students at the Center. Her work is grounded in student voice, equitable access, and helping every young person see what's possible for their future.
+      </p>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <span style="background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px;">Special Education</span>
+      <span style="background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px;">Student Voice & Equity</span>
+      <span style="background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px;">College Readiness</span>
+      <span style="background:var(--maroon-pale); color:var(--maroon); font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px;">Race & Equity in Education</span>
+      <span style="background:var(--gold-light); color:var(--gold-dark); font-size:12px; font-weight:500; padding:5px 14px; border-radius:20px;">Springfield, Massachusetts</span>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       SERVICES
+       ════════════════════════════ -->
+  <section class="section" id="services">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">What I offer</span></div>
+    <h2 class="section-title">Services</h2>
+    <p class="section-sub">Everything you need to launch and grow your career</p>
+    <div class="services-grid">
+
+      <!-- Edit service name and description below -->
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10,9 9,9 8,9"/></svg>
+        </div>
+        <div class="service-name">Resume Building</div>
+        <div class="service-desc">Craft a standout resume tailored to your goals and target roles — from blank page to job-ready.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="service-name">Opportunity Discovery</div>
+        <div class="service-desc">I find internships, scholarships, jobs, and programs that genuinely fit your profile and goals.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <div class="service-name">Zoom Sessions</div>
+        <div class="service-desc">Private 1-on-1 coaching calls scheduled at your convenience. Zoom link sent automatically on booking.</div>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="service-name">Career Strategy</div>
+        <div class="service-desc">Personalized action plans for your unique academic path and career ambitions.</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       RESUME BUILDING PROCESS
+       ════════════════════════════ -->
+  <section class="section" id="resume">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">How it works</span></div>
+    <h2 class="section-title">Resume building process</h2>
+    <p class="section-sub">A proven step-by-step approach that gets results</p>
+    <div class="resume-steps">
+
+      <!-- Edit step titles, descriptions, and badges here -->
+      <div class="resume-step">
+        <div class="step-num">1</div>
+        <div>
+          <div class="step-title">Discovery session</div>
+          <div class="step-desc">We talk through your background, goals, strengths, and target opportunities so I can understand your full picture.</div>
+          <span class="step-badge">30 min Zoom</span>
+        </div>
+      </div>
+
+      <div class="resume-step">
+        <div class="step-num">2</div>
+        <div>
+          <div class="step-title">Draft & live review</div>
+          <div class="step-desc">I build a first draft and walk you through every section with real-time edits so you understand the choices.</div>
+          <span class="step-badge">Shared Google Doc</span>
+        </div>
+      </div>
+
+      <div class="resume-step">
+        <div class="step-num">3</div>
+        <div>
+          <div class="step-title">Targeted refinement</div>
+          <div class="step-desc">We tailor your resume for specific roles, colleges, or programs — strong keywords, clear narrative, right length.</div>
+          <span class="step-badge">Unlimited revisions</span>
+        </div>
+      </div>
+
+      <div class="resume-step">
+        <div class="step-num">4</div>
+        <div>
+          <div class="step-title">Final polish & ATS check</div>
+          <div class="step-desc">Final formatting, keyword optimization, and applicant tracking system compatibility — ready to submit anywhere.</div>
+          <span class="step-badge">Ready to submit</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       OPPORTUNITIES
+       ════════════════════════════ -->
+  <section class="section" id="opportunities">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">What I find for you</span></div>
+    <h2 class="section-title">Opportunities I can help you find</h2>
+    <p class="section-sub">Curated for students at every stage of their journey</p>
+    <div class="opps-list">
+
+      <div class="opp-card">
+        <div class="opp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <div class="opp-info">
+          <div class="opp-title">Internships &amp; co-ops</div>
+          <div class="opp-meta">Summer &amp; semester programs matched to your field and level</div>
+        </div>
+        <span class="opp-tag tag-intern">Internship</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="opp-info">
+          <div class="opp-title">Scholarships &amp; grants</div>
+          <div class="opp-meta">Local, national, and field-specific awards you may not know exist</div>
+        </div>
+        <span class="opp-tag tag-scholar">Scholarship</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <div class="opp-info">
+          <div class="opp-title">Part-time &amp; entry-level jobs</div>
+          <div class="opp-meta">Roles that build real-world experience while you're still in school</div>
+        </div>
+        <span class="opp-tag tag-job">Job</span>
+      </div>
+
+      <div class="opp-card">
+        <div class="opp-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+        </div>
+        <div class="opp-info">
+          <div class="opp-title">Volunteer &amp; community programs</div>
+          <div class="opp-meta">Strengthen your application with meaningful service and leadership</div>
+        </div>
+        <span class="opp-tag tag-vol">Volunteer</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       BOOKING CALENDAR
+       ════════════════════════════ -->
+  <section class="section" id="booking">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Schedule</span></div>
+    <h2 class="section-title">Book a session</h2>
+    <p class="section-sub">Pick a date and time — a Zoom link is sent to you automatically</p>
+
+    <div class="calendar-wrap">
+      <div class="cal-header">
+        <span class="cal-month" id="calMonthLabel">May 2026</span>
+        <div class="cal-nav">
+          <button class="cal-btn" onclick="changeMonth(-1)" aria-label="Previous month">&#8592;</button>
+          <button class="cal-btn" onclick="changeMonth(1)" aria-label="Next month">&#8594;</button>
+        </div>
+      </div>
+
+      <div class="cal-grid">
+        <div class="cal-days-header">
+          <div class="cal-day-label">Su</div><div class="cal-day-label">Mo</div>
+          <div class="cal-day-label">Tu</div><div class="cal-day-label">We</div>
+          <div class="cal-day-label">Th</div><div class="cal-day-label">Fr</div>
+          <div class="cal-day-label">Sa</div>
+        </div>
+        <div class="cal-days" id="calDays"></div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="slots-section" id="slotsSection">
+        <div class="slots-title" id="slotsLabel">Available times</div>
+        <div class="slots-grid" id="slotsGrid"></div>
+      </div>
+
+      <div class="booking-form" id="bookingForm">
+        <div class="zoom-notice">
+          <svg class="zoom-svg" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+            <rect width="22" height="22" rx="5" fill="#2D8CFF"/>
+            <path d="M3 8h10a1 1 0 011 1v4a1 1 0 01-1 1H3a1 1 0 01-1-1V9a1 1 0 011-1z" fill="#fff"/>
+            <path d="M14 10.5l5-2.5v6l-5-2.5V10.5z" fill="#fff"/>
+          </svg>
+          A Zoom link will be emailed to you right after booking
+        </div>
+
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fname">First name</label>
+            <input type="text" id="fname" placeholder="Jamie"/>
+          </div>
+          <div class="form-field">
+            <label for="lname">Last name</label>
+            <input type="text" id="lname" placeholder="Chen"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="femail">Email address</label>
+            <input type="email" id="femail" placeholder="jamie@email.com"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="ftype">Session type</label>
+            <select id="ftype">
+              <option>Resume building</option>
+              <option>Opportunity discovery</option>
+              <option>Career strategy</option>
+              <option>Follow-up / revision</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="fnotes">Anything I should know beforehand? (optional)</label>
+            <textarea id="fnotes" placeholder="e.g. I'm applying for engineering internships this fall..."></textarea>
+          </div>
+        </div>
+        <button class="confirm-btn" onclick="confirmBooking()">Confirm booking &amp; get Zoom link</button>
+      </div>
+
+      <div class="confirm-msg" id="confirmMsg">
+        ✓ &nbsp; Booking confirmed! Check your email for your personalized Zoom link.
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════
+       TESTIMONIALS
+       Edit student quotes, names, and roles here
+       ════════════════════════════ -->
+  <section class="section">
+    <div class="section-eyebrow"><div class="eyebrow-line"></div><span class="eyebrow-text">Student stories</span></div>
+    <h2 class="section-title">What students are saying</h2>
+    <p class="section-sub">Real results from real one-on-one sessions</p>
+    <div class="testimonials">
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"My resume went from a blank page to landing three interviews in two weeks. Absolutely life-changing coaching."</div>
+        <div class="testimonial-author">
+          <div class="avatar av-m">MR</div>
+          <div>
+            <div class="author-name">Maya R.</div>
+            <div class="author-role">College junior</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Found a scholarship I never would have discovered on my own. The 1-on-1 Zoom sessions made all the difference."</div>
+        <div class="testimonial-author">
+          <div class="avatar av-j">JT</div>
+          <div>
+            <div class="author-name">Jordan T.</div>
+            <div class="author-role">High school senior</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial">
+        <div class="stars">★★★★★</div>
+        <div class="testimonial-text">"Got my first internship offer after just two sessions. The personalized approach is exactly what I needed."</div>
+        <div class="testimonial-author">
+          <div class="avatar av-s">SL</div>
+          <div>
+            <div class="author-name">Sofia L.</div>
+            <div class="author-role">Community college student</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ════════════════════════════
+     CONTACT / CTA BANNER
+     Edit your email, phone, and social links here
+     ════════════════════════════ -->
+<section class="cta-section">
+  <h2>Ready to take the next step?</h2>
+  <p>Book a session today or reach out directly — I'd love to hear from you.</p>
+  <div class="cta-contact">
+    <!-- ↓ Replace with your real email -->
+    <div class="contact-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      <a href="mailto:coburn.arria@gmail.com">coburn.arria@gmail.com</a>
+    </div>
+    <!-- ↓ Replace with your real phone number -->
+    <div class="contact-item">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.63A2 2 0 012 .98h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.91a16 16 0 006.18 6.18l1.29-1.29a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      <a href="tel:+14132658707">(413) 265-8707</a>
+    </div>
+  </div>
+  <a href="#booking" class="btn-primary">Book your free intro session</a>
+</section>
+
+<!-- ════════════════════════════
+     FOOTER
+     Edit footer links and copyright here
+     ════════════════════════════ -->
+<footer>
+  <a class="footer-brand" href="#">
+    <svg width="28" height="28" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+      <circle cx="18" cy="18" r="17" fill="#6B1E2E"/>
+      <circle cx="12" cy="16" r="3.5" fill="#fff"/><circle cx="24" cy="16" r="3.5" fill="#fff"/>
+      <circle cx="12" cy="16" r="2" fill="#1a0510"/><circle cx="24" cy="16" r="2" fill="#1a0510"/>
+      <path d="M15 21 Q18 24 21 21" stroke="#C9922A" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span class="footer-name">Arria Coburn</span>
+  </a>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">FAQ</a>
+    <a href="mailto:coburn.arria@gmail.com">Contact</a>
+  </div>
+  <!-- ↓ Edit copyright year/name here -->
+  <div class="footer-copy">© 2026 Arria Coburn · Student Success Coaching · All sessions conducted via Zoom</div>
+</footer>
+
+<!-- ════════════════════════════
+     CALENDAR JAVASCRIPT
+     To add/remove available days: edit the availableSlots object below.
+     Keys are day numbers, values are arrays of time strings.
+     ════════════════════════════ -->
+<script>
+  let curYear = 2026, curMonth = 4; // Month is 0-indexed: 4 = May
+  let selDay = null, selSlot = null;
+
+  // ↓ Edit available appointment slots here.
+  // Format: { dayNumber: ['time1', 'time2', ...], ... }
+  const slots = {
+    9:  ['10:00 AM','11:00 AM','2:00 PM','3:00 PM'],
+    12: ['9:00 AM','11:30 AM','1:00 PM','3:00 PM'],
+    13: ['10:00 AM','2:00 PM','4:00 PM'],
+    14: ['9:00 AM','10:30 AM','3:00 PM'],
+    16: ['11:00 AM','1:00 PM','2:30 PM'],
+    19: ['9:30 AM','11:00 AM','4:00 PM'],
+    20: ['10:00 AM','12:00 PM','3:30 PM'],
+    21: ['9:00 AM','11:30 AM','2:00 PM'],
+    23: ['10:00 AM','1:00 PM','3:00 PM'],
+    26: ['9:00 AM','11:00 AM','2:30 PM'],
+    27: ['10:30 AM','1:00 PM','4:00 PM'],
+    28: ['9:00 AM','11:00 AM','3:00 PM'],
+  };
+
+  const months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+  function renderCal() {
+    document.getElementById('calMonthLabel').textContent = months[curMonth] + ' ' + curYear;
+    const grid = document.getElementById('calDays');
+    grid.innerHTML = '';
+    const firstDay = new Date(curYear, curMonth, 1).getDay();
+    const days = new Date(curYear, curMonth + 1, 0).getDate();
+    const today = new Date();
+
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      grid.appendChild(el);
+    }
+    for (let d = 1; d <= days; d++) {
+      const el = document.createElement('div');
+      el.className = 'cal-day';
+      el.textContent = d;
+      const isToday = d === today.getDate() && curMonth === today.getMonth() && curYear === today.getFullYear();
+      const isPast = new Date(curYear, curMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+      if (isToday) el.classList.add('today');
+      if (isPast || !slots[d]) {
+        el.classList.add('disabled');
+      } else {
+        el.classList.add('available', 'has-dot');
+        el.onclick = () => pickDay(d, el);
+      }
+      if (selDay === d) el.classList.add('selected');
+      grid.appendChild(el);
+    }
+  }
+
+  function pickDay(d, el) {
+    selDay = d; selSlot = null;
+    document.getElementById('bookingForm').style.display = 'none';
+    document.getElementById('confirmMsg').classList.remove('show');
+    document.querySelectorAll('.cal-day.selected').forEach(e => e.classList.remove('selected'));
+    el.classList.add('selected');
+
+    const ss = document.getElementById('slotsSection');
+    const sg = document.getElementById('slotsGrid');
+    document.getElementById('slotsLabel').textContent = months[curMonth] + ' ' + d + ' — available times';
+    sg.innerHTML = '';
+    (slots[d] || []).forEach(t => {
+      const b = document.createElement('div');
+      b.className = 'slot'; b.textContent = t;
+      b.onclick = () => pickSlot(t, b);
+      sg.appendChild(b);
+    });
+    ss.style.display = 'block';
+    ss.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function pickSlot(t, el) {
+    selSlot = t;
+    document.querySelectorAll('.slot').forEach(s => s.classList.remove('active'));
+    el.classList.add('active');
+    const form = document.getElementById('bookingForm');
+    form.style.display = 'block';
+    document.getElementById('confirmMsg').classList.remove('show');
+    form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function confirmBooking() {
+    const fname = document.getElementById('fname').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    if (!fname || !email) { alert('Please enter your name and email to continue.'); return; }
+    document.getElementById('bookingForm').style.display = 'none';
+    const msg = document.getElementById('confirmMsg');
+    msg.textContent = '✓  Booking confirmed for ' + months[curMonth] + ' ' + selDay + ' at ' + selSlot + '! Check ' + email + ' for your Zoom link.';
+    msg.classList.add('show');
+    if (slots[selDay]) slots[selDay] = slots[selDay].filter(s => s !== selSlot);
+    msg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function changeMonth(dir) {
+    curMonth += dir;
+    if (curMonth > 11) { curMonth = 0; curYear++; }
+    if (curMonth < 0)  { curMonth = 11; curYear--; }
+    selDay = null; selSlot = null;
+    document.getElementById('slotsSection').style.display = 'none';
+    document.getElementById('bookingForm').style.display = 'none';
+    renderCal();
+  }
+
+  renderCal();
+</script>
+</body>
+</html>
